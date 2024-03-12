@@ -1,10 +1,15 @@
-
-import './App.css'
+import './App.module.css'
+import { Header } from './components/Header'
+import { TaskBar } from './components/TaskBar'
 
 export function App() {
 
   return (
-    <h1>Hello World.</h1>
+    <div>
+      <Header />
+
+      <TaskBar />
+    </div>
   )
 }
 
