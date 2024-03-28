@@ -1,0 +1,58 @@
+.taskbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: -1.75rem;
+  height: 3.5rem;
+}
+
+.taskbarForm {
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+  gap: 0.5rem;
+}
+
+.taskbarForm textarea {
+  width: 40rem;
+
+  resize: none;
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  padding: 1rem 0 1rem 1rem;
+  line-height: 1.4;
+
+  background: var(--gray-500);
+}
+
+.taskbarForm textarea::placeholder {
+  color: var(--gray-300);
+}
+
+.taskbarForm textarea:valid {
+  color: var(--gray-100);
+}
+
+.taskbarForm button[type="submit"] {
+  color: var(--gray-100);
+  background: var(--blue-dark);
+  border-radius: 8px;
+  border: 0;
+
+  width: 5.75rem;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+}
