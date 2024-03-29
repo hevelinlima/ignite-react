@@ -1,0 +1,37 @@
+.tasks {
+  margin: 4rem 19rem 0 19rem;
+  width: 47.375rem;
+}
+
+.tasks header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tasksHeader {
+  display: flex;
+  flex-direction: row;
+  padding: 0 0.2rem;
+
+  gap: 0.5rem;
+}
+
+.tasksHeader h3:first-child {
+  color: var(--blue-light);
+  font-size: 0.85rem;
+}
+
+.tasksHeader h3:last-child {
+  color: var(--purple-light);
+  font-size: 0.85rem;
+}
+
+.tasksHeader p {
+  background: var(--gray-400);
+  color: var(--gray-200);
+  font-size: 0.75rem;
+  font-weight: bold;
+
+  padding: 0.1rem 0.5rem;
+  border-radius: 16px;
+}
