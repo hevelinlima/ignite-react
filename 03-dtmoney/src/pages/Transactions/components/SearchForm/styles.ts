@@ -21,7 +21,7 @@ export const SearchFormContainer = styled.form`
       align-items: center;
       gap: 0.75rem;
 
-      border: 0;
+     
       padding: 1rem;
       background: transparent;
       border: 1px solid ${(props)=>props.theme["green-300"]};
