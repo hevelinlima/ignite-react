@@ -17,23 +17,23 @@ export const SearchFormContainer = styled.form`
     }
   }
   button{
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 
-     
-      padding: 1rem;
-      background: transparent;
-      border: 1px solid ${(props)=>props.theme["green-300"]};
-      color: ${(props)=>props.theme["green-300"]};
-      font-weight: bold;
-      border-radius: 6px;
+    
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid ${(props)=>props.theme["green-300"]};
+    color: ${(props)=>props.theme["green-300"]};
+    font-weight: bold;
+    border-radius: 6px;
 
-      &:hover{
-        background: ${(props)=>props.theme["green-500"]};
-        border-color: ${(props)=>props.theme["green-500"]};
-        color: ${(props)=>props.theme.white};
-        transition: all 0.2s;
-      }
+    &:hover{
+      background: ${(props)=>props.theme["green-500"]};
+      border-color: ${(props)=>props.theme["green-500"]};
+      color: ${(props)=>props.theme.white};
+      transition: all 0.2s;
     }
+  }
 `

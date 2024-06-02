@@ -11,10 +11,10 @@ export const SummaryContainer = styled.section`
   gap: 2rem;
   
   margin-top: -5rem;
-`
+`;
 
 interface SummaryCardProps{
-  variant ?: 'green'
+  variant ?: 'green';
 }
 
 export const SummaryCard = styled.div<SummaryCardProps>`
@@ -39,4 +39,4 @@ export const SummaryCard = styled.div<SummaryCardProps>`
   ${props => props.variant === 'green' && css`
     background-color: ${(props)=>props.theme["green-700"]};
   `}
-`
+`;
