@@ -15,6 +15,14 @@
       "category": "Alimentação",
       "price": 35,
       "createdAt": "2024-06-02T14:12:26.377Z"
+    },
+    {
+      "id": 3,
+      "description": "Mouse",
+      "type": "outcome",
+      "category": "Utensílios",
+      "price": 60,
+      "createdAt": "2024-06-02T23:12:26.377Z"
     }
   ]
 }
