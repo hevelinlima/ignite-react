@@ -1,7 +1,7 @@
 {
   "transactions": [
     {
-      "id": 1,
+      "id": "1",
       "description": "Desenvolvimento de site",
       "type": "income",
       "category": "Venda",
@@ -9,7 +9,7 @@
       "createdAt": "2024-06-02T14:10:26.377Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "description": "Hamburguer",
       "type": "outcome",
       "category": "Alimentação",
@@ -17,12 +17,28 @@
       "createdAt": "2024-06-02T14:12:26.377Z"
     },
     {
-      "id": 3,
+      "id": "3",
       "description": "Mouse",
       "type": "outcome",
       "category": "Utensílios",
       "price": 60,
       "createdAt": "2024-06-02T23:12:26.377Z"
+    },
+    {
+      "id": "6296",
+      "description": "Programação Web para Iniciantes | Turma 2",
+      "price": 1000,
+      "category": "Educação",
+      "type": "outcome",
+      "createdAt": "2024-06-05T18:34:40.535Z"
+    },
+    {
+      "id": "0dcd",
+      "description": "Desenvolvimento de app",
+      "price": 1500,
+      "category": "Trabalho",
+      "type": "income",
+      "createdAt": "2024-06-05T19:02:19.585Z"
     }
   ]
 }
