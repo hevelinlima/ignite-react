@@ -3,7 +3,7 @@
 <br>
 
 <p align="center">
-  <img alt="Pré-vizualização do projeto Feed" src=".github/dtmoney-preview.png" width="90%">
+  <img alt="Pré-vizualização do projeto Feed" src="../.github/dtmoney-preview.png" width="90%">
 </p>
 
 <p align="center">
@@ -37,3 +37,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Git e Github
 - Vite
 - Figma
+
+---
+
+Feito com ♥ by hevelinlima
+
