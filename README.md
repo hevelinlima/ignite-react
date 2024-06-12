@@ -20,6 +20,12 @@ Foram abordados temas como estados, componentização, propriedades, imutabilida
 
 Além de revisitar os conceitos do módulo anterior, este módulo aborda assuntos como contextAPI, useEffect e localStorage.
 
+## Módulo #3: Consumo de API e Performance no ReactJS
+
+💻 App - [DT Money](https://github.com/hevelinlima/ignite-react/tree/main/03-dtmoney)
+
+Este módulo apresenta novos conceitos, como a utilização de Fetch e Then e as bibliotecas Json-server e Axios para lidar com requisições.
+
 ---
 
 Feito com ♥ by hevelinlima

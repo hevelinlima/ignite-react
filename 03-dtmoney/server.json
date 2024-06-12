@@ -23,22 +23,6 @@
       "category": "Utensílios",
       "price": 60,
       "createdAt": "2024-06-02T23:12:26.377Z"
-    },
-    {
-      "id": "6296",
-      "description": "Programação Web para Iniciantes | Turma 2",
-      "price": 1000,
-      "category": "Educação",
-      "type": "outcome",
-      "createdAt": "2024-06-05T18:34:40.535Z"
-    },
-    {
-      "id": "0dcd",
-      "description": "Desenvolvimento de app",
-      "price": 1500,
-      "category": "Trabalho",
-      "type": "income",
-      "createdAt": "2024-06-05T19:02:19.585Z"
     }
   ]
 }

@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+<h1 align="center"> DT Money </h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br>
 
-Currently, two official plugins are available:
+<p align="center">
+  <img alt="Pré-vizualização do projeto Feed" src=".github/dtmoney-preview.png" width="90%">
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+ 
+</p>
 
-## Expanding the ESLint configuration
+## 💻 Projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+O DT Money é um app de organização financeira, e permite:
 
-- Configure the top-level `parserOptions` property like this:
+- Adicionar uma nova transação realizada
+- Calcular os valores de entrada, saída e o total
+- Realizar busca por transações
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Para o desenvolvimento dessas funcionalidades, foram utilizados conceitos como:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Estados
+- Propriedades e Componentização
+- Fetch / Axios
+- Roteamento e React Router DOM
+- Formulários
+
+## 🚀 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- HTML + CSS
+- TypeScript
+- React
+- Json-server
+- Git e Github
+- Vite
+- Figma
