@@ -1,7 +1,9 @@
 import { stripe } from "@/src/lib/stripe";
 import { ImageContainer, ProductContainer, ProductDetails } from "@/src/styles/pages/product";
+import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
+import { useState } from "react";
 import Stripe from "stripe";
 
 interface ProductProps{
@@ -11,10 +13,29 @@ interface ProductProps{
     imageURL: string;
     price: string;
     description: string;
+    defaultPriceId: string;
   }
 }
 
 export default function Product({ product }: ProductProps){
+  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
+
+  async function handleBuyProduct(){
+    try{
+      setIsCreatingCheckoutSession(true)
+      const response = await axios.post('/api/checkout', {
+        priceId: product.defaultPriceId,
+      })
+
+      const { checkoutUrl } = response.data;
+
+      window.location.href = checkoutUrl;
+
+    } catch (err) {
+      setIsCreatingCheckoutSession(false)
+      alert('Falha ao redirecionar ao checkout!')
+    }
+  }
   return(
     <ProductContainer>
       <ImageContainer>
@@ -24,7 +45,7 @@ export default function Product({ product }: ProductProps){
         <h1> {product.name} </h1>
         <span> {product.price} </span>
         <p> {product.description} </p>
-        <button>Comprar agora</button>
+        <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>Comprar agora</button>
       </ProductDetails>
     </ProductContainer>
   )
@@ -35,7 +56,7 @@ export const getStaticPaths:GetStaticPaths = async () => {
     paths: [
      { params: { id: 'prod_QIDp4IplfRJp8d'}}
     ],
-    fallback: false,
+    fallback: true,
   }
 } 
 
@@ -45,7 +66,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
       notFound: true,
     };
   }
-  
+
   const productId = params.id;
 
   const product = await stripe.products.retrieve(productId, {
@@ -67,6 +88,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
             }).format(price.unit_amount / 100)
           : 'Preço indisponível',
         description: product.description,
+        defaultPriceId: price.id,
       }
     },
     revalidate: 60 * 60 * 1,  //1 hour
