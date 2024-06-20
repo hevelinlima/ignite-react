@@ -1,17 +1,74 @@
+import { stripe } from "@/src/lib/stripe";
 import { ImageContainer, ProductContainer, ProductDetails } from "@/src/styles/pages/product";
+import { GetStaticPaths, GetStaticProps } from "next";
+import Image from "next/image";
+import Stripe from "stripe";
 
-export default function Product(){
+interface ProductProps{
+  product: {
+    id: string;
+    name: string;
+    imageURL: string;
+    price: string;
+    description: string;
+  }
+}
+
+export default function Product({ product }: ProductProps){
   return(
     <ProductContainer>
       <ImageContainer>
-
+        <Image src={product.imageURL} width={520} height={480} alt="" />
       </ImageContainer>
       <ProductDetails>
-        <h1>Camiseta X</h1>
-        <span>R$ 79,90</span>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia, quod.</p>
+        <h1> {product.name} </h1>
+        <span> {product.price} </span>
+        <p> {product.description} </p>
         <button>Comprar agora</button>
       </ProductDetails>
     </ProductContainer>
   )
+}
+
+export const getStaticPaths:GetStaticPaths = async () => {
+  return{
+    paths: [
+     { params: { id: 'prod_QIDp4IplfRJp8d'}}
+    ],
+    fallback: false,
+  }
+} 
+
+export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ params }) => {
+  if (!params) {
+    return {
+      notFound: true,
+    };
+  }
+  
+  const productId = params.id;
+
+  const product = await stripe.products.retrieve(productId, {
+    expand: ['default_price'],
+  });
+
+  const price = product.default_price as Stripe.Price;
+
+  return{
+    props: {
+      product: {
+        name: product.name,
+        id: product.id,
+        imageURL: product.images[0],
+        price: price && price.unit_amount !== null 
+          ? new Intl.NumberFormat('pt-BR', {
+              style: 'currency',
+              currency: 'BRL'
+            }).format(price.unit_amount / 100)
+          : 'Preço indisponível',
+        description: product.description,
+      }
+    },
+    revalidate: 60 * 60 * 1,  //1 hour
+  }
 }
