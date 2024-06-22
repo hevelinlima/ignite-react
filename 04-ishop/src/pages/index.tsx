@@ -1,4 +1,4 @@
-import { HomeContainer, Product } from "../styles/pages/home";
+import { CartFooter, FooterContent, HomeContainer, ImageFooter, Product } from "../styles/pages/home";
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css';
 
@@ -8,6 +8,7 @@ import Stripe from "stripe";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import Head from "next/head";
+import { Handbag } from "@phosphor-icons/react";
 
 interface HomeProps{
   products: {
@@ -21,7 +22,7 @@ interface HomeProps{
 export default function Home({ products }: HomeProps) {
   const [sliderRef] = useKeenSlider({
     slides: {
-      perView: 3,
+      perView: 'auto',
       spacing: 48,
     }
   })
@@ -38,11 +39,16 @@ export default function Home({ products }: HomeProps) {
               <Product 
                 className="keen-slider__slide"
               >
-                <Image src={ product.imageURL} width={528} height={480} alt={product.name} />
-                <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
-                </footer>
+                <Image src={ product.imageURL} width={496} height={456} alt={product.name} />
+                <ImageFooter>
+                  <FooterContent>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </FooterContent>
+                  <CartFooter>
+                    <Handbag size={32} weight="bold" />
+                  </CartFooter>
+                </ImageFooter>
               </Product>
             </Link> 
           )
