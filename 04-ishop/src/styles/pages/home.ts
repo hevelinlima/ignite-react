@@ -5,7 +5,7 @@ export const HomeContainer = styled('main', {
   width: '100%',
   maxWidth: 'calc(100vw - ((100vw - 1180px) / 2 ))',
   marginLeft: 'auto',
-  minHeight: 586
+  minHeight: 430
 });
 
 export const Product = styled('div', {
@@ -33,8 +33,9 @@ export const Product = styled('div', {
     borderRadius: 6,
 
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-between',
+  
 
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     transform: 'translateY(110%)',
@@ -60,3 +61,4 @@ export const Product = styled('div', {
   }
 
 });
+
