@@ -18,12 +18,13 @@ export const Header = styled('header', {
   justifyContent: 'space-between',
 })
 
-export const CartContainer = styled('div', {
+export const CartContainer = styled('button', {
   display: 'flex',
   padding: '1rem',
   borderRadius: 6,
   background: '$gray800',
   color: '$gray400',
+  border: 0,
 
   '&:hover': {
     color: '$white',
