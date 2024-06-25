@@ -1,19 +1,40 @@
 import { X } from '@phosphor-icons/react'
 import * as Dialog from '@radix-ui/react-dialog'
-import { Close, Content, Overlay } from './styles'
+import { BuyButton, CardsContainer, CheckoutInfo, Close, Content, Overlay, Title } from './styles'
+import { ProductCard } from '../ProductCard'
 
 export function SideBar(){
   return(
     <Dialog.Portal>
       <Overlay />
       <Content>
-        <Dialog.Title>Sacola de compras</Dialog.Title>
-        <ul>
-          <li>Camiseta 1</li>
-          <li>Camiseta 2</li>
-        </ul>
+        <Title>Sacola de compras</Title>
+
+        <CardsContainer>
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </CardsContainer>
+
+        <CheckoutInfo>
+          <div>
+            <span>Quantidade</span>
+            <span>3 itens</span>
+          </div>
+          <div>
+            <p>Valor Total</p>
+            <p>R$ 275,90</p>
+          </div>
+        </CheckoutInfo>
+
+        <BuyButton>
+          Finalizar compra
+        </BuyButton>
+
         <Close>
-          <X size={20} />
+          <X size={20} weight='bold' />
         </Close>
       </Content>
     </Dialog.Portal>
