@@ -1,3 +1,4 @@
+import { IProduct } from "@/src/contexts/CartContext";
 import { stripe } from "@/src/lib/stripe";
 import { ImageContainer, ProductContainer, ProductDetails } from "@/src/styles/pages/product";
 import axios from "axios";
@@ -8,14 +9,7 @@ import { useState } from "react";
 import Stripe from "stripe";
 
 interface ProductProps{
-  product: {
-    id: string;
-    name: string;
-    imageURL: string;
-    price: string;
-    description: string;
-    defaultPriceId: string;
-  }
+  product: IProduct;
 }
 
 export default function Product({ product }: ProductProps){
@@ -50,7 +44,7 @@ export default function Product({ product }: ProductProps){
           <h1> {product.name} </h1>
           <span> {product.price} </span>
           <p> {product.description} </p>
-          <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>Comprar agora</button>
+          <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>Colocar na sacola</button>
         </ProductDetails>
       </ProductContainer>
     </>

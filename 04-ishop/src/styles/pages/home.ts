@@ -66,12 +66,13 @@ export const FooterContent = styled('div', {
   },
 });
 
-export const CartFooter = styled('div', {
+export const CartFooter = styled('button', {
   display: 'flex',
   padding: '1rem',
   borderRadius: 6,
   background: '$green500',
   color: '$white',
+  border: 0,
 
   '&:hover': {
     background: '$green300',
