@@ -1,14 +1,18 @@
 import Image from "next/image";
 import { CardContainer, CardContent } from "./styles";
-import iconLogo from "../../../public/icon.svg"
+import { IProduct } from "@/src/contexts/CartContext";
 
-export function ProductCard(){
+interface ItemProps{
+  cartItem: IProduct;
+}
+
+export function ProductCard({cartItem}: ItemProps){
   return(
     <CardContainer>
-      <Image src={iconLogo} alt="Logo" />
+      <Image width={52} height={52} src={cartItem.imageURL} alt={cartItem.name} />
       <CardContent>
-        <p>Camiseta Beyond the Limits</p>
-        <span>R$ 79,90</span>
+        <p> {cartItem.name} </p>
+        <span> {cartItem.price} </span>
         <button>Remover</button>
       </CardContent>
     </CardContainer>

@@ -2,8 +2,10 @@ import { X } from '@phosphor-icons/react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { BuyButton, CardsContainer, CheckoutInfo, Close, Content, Overlay, Title } from './styles'
 import { ProductCard } from '../ProductCard'
+import { useCart } from "@/src/hooks/useCart";
 
 export function SideBar(){
+  const { cartItems } = useCart()
   return(
     <Dialog.Portal>
       <Overlay />
@@ -11,11 +13,12 @@ export function SideBar(){
         <Title>Sacola de compras</Title>
 
         <CardsContainer>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {cartItems.map((cartItem) => (
+            <ProductCard
+              key={cartItem.id}
+              cartItem={cartItem}
+            />
+          ))}
         </CardsContainer>
 
         <CheckoutInfo>

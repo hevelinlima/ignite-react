@@ -9,6 +9,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import { Handbag } from "@phosphor-icons/react";
+import { useCart } from "../hooks/useCart";
 
 interface HomeProps{
   products: {
@@ -16,16 +17,22 @@ interface HomeProps{
     name: string;
     imageURL: string;
     price: string;
+    description: string;
+    defaultPriceId: string;
   }[]
 }
 
 export default function Home({ products }: HomeProps) {
+  const { addToCart } = useCart()
+
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 'auto',
       spacing: 48,
     }
-  })
+  });
+
+  
   return (
     <>
       <Head>
@@ -45,7 +52,7 @@ export default function Home({ products }: HomeProps) {
                     <strong>{product.name}</strong>
                     <span>{product.price}</span>
                   </FooterContent>
-                  <CartFooter>
+                  <CartFooter onClick={() => addToCart(product)}>
                     <Handbag size={32} weight="bold" />
                   </CartFooter>
                 </ImageFooter>
