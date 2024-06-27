@@ -85,6 +85,8 @@ export const CheckoutInfo = styled('div', {
     },
 
     span: {
+      display: 'flex',
+      gap: '0.25rem',
       fontSize: '$md',
     }
   }

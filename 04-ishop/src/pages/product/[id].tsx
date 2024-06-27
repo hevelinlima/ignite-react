@@ -89,6 +89,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
             }).format(price.unit_amount / 100)
           : 'Preço indisponível',
         description: product.description,
+        numberPrice: price && price.unit_amount !== null ? price.unit_amount / 100 : 0,
         defaultPriceId: price.id,
       }
     },
