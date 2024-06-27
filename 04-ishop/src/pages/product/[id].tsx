@@ -1,6 +1,7 @@
 import { IProduct } from "@/src/contexts/CartContext";
+import { useCart } from "@/src/hooks/useCart";
 import { stripe } from "@/src/lib/stripe";
-import { ImageContainer, ProductContainer, ProductDetails } from "@/src/styles/pages/product";
+import { AddToCartButton, ImageContainer, ProductContainer, ProductDetails } from "@/src/styles/pages/product";
 import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
@@ -13,24 +14,24 @@ interface ProductProps{
 }
 
 export default function Product({ product }: ProductProps){
-  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
+  const { addToCart } = useCart()
+  // const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
+  // async function handleBuyProduct(){
+  //   try{
+  //     setIsCreatingCheckoutSession(true)
+  //     const response = await axios.post('/api/checkout', {
+  //       priceId: product.defaultPriceId,
+  //     })
 
-  async function handleBuyProduct(){
-    try{
-      setIsCreatingCheckoutSession(true)
-      const response = await axios.post('/api/checkout', {
-        priceId: product.defaultPriceId,
-      })
+  //     const { checkoutUrl } = response.data;
 
-      const { checkoutUrl } = response.data;
+  //     window.location.href = checkoutUrl;
 
-      window.location.href = checkoutUrl;
-
-    } catch (err) {
-      setIsCreatingCheckoutSession(false)
-      alert('Falha ao redirecionar ao checkout!')
-    }
-  }
+  //   } catch (err) {
+  //     setIsCreatingCheckoutSession(false)
+  //     alert('Falha ao redirecionar ao checkout!')
+  //   }
+  // }
   return(
     <>
      <Head>
@@ -44,7 +45,7 @@ export default function Product({ product }: ProductProps){
           <h1> {product.name} </h1>
           <span> {product.price} </span>
           <p> {product.description} </p>
-          <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>Colocar na sacola</button>
+          <AddToCartButton /*disabled={isCreatingCheckoutSession}*/ onClick={() => {addToCart(product)}}>Colocar na sacola</AddToCartButton>
         </ProductDetails>
       </ProductContainer>
     </>
@@ -88,6 +89,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
             }).format(price.unit_amount / 100)
           : 'Preço indisponível',
         description: product.description,
+        numberPrice: price && price.unit_amount !== null ? price.unit_amount / 100 : 0,
         defaultPriceId: price.id,
       }
     },

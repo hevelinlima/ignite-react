@@ -5,7 +5,15 @@ import { ProductCard } from '../ProductCard'
 import { useCart } from "@/src/hooks/useCart";
 
 export function SideBar(){
-  const { cartItems } = useCart()
+  const { cartItems } = useCart();
+
+  const cartTotal = cartItems.length;
+
+  const valueToPay = cartItems.reduce((total, product) => {
+    return total + product.numberPrice;
+  }, 0);
+  
+
   return(
     <Dialog.Portal>
       <Overlay />
@@ -24,11 +32,13 @@ export function SideBar(){
         <CheckoutInfo>
           <div>
             <span>Quantidade</span>
-            <span>3 itens</span>
+            <span>
+              { cartTotal } {cartTotal == 1 ? 'item' : 'itens' } 
+            </span>
           </div>
           <div>
             <p>Valor Total</p>
-            <p>R$ 275,90</p>
+            <p>R$ { valueToPay }</p>
           </div>
         </CheckoutInfo>
 
