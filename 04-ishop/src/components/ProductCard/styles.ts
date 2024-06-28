@@ -6,6 +6,8 @@ export const CardContainer = styled('div', {
   gap: '1.25rem',
 
   display: 'flex',
+  justifyContent: 'flex-start',
+  alignItems: 'flex-start',
   img: {
     objectFit: 'cover',
   }
@@ -39,4 +41,20 @@ export const CardContent = styled('div', {
       transition: 'all 0.2s ease-in-out'
     }
   }
-})
+});
+
+export const ImageContainer = styled('div', {
+  background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
+  borderRadius: 8,
+  padding: '0.25rem',
+
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  img: {
+    objectFit: 'cover',
+  }
+});
+
+

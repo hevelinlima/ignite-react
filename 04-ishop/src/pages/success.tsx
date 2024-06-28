@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ImageContainer, SuccessContainer } from "../styles/pages/success";
+import { ImageContainer, ImagesGroup, SuccessContainer } from "../styles/pages/success";
 import { GetServerSideProps } from "next";
 import { stripe } from "../lib/stripe";
 import Stripe from "stripe";
@@ -25,11 +25,13 @@ export default function Product({customerName, product, productsImages}: Success
       <SuccessContainer>
         <h1>Compra efetuada!</h1>
 
-        {productsImages.map((image, i) => (
+        <ImagesGroup>
+          {productsImages.map((image, i) => (
             <ImageContainer key={i}>
-              <Image src={image} width={120} height={110} alt="" />
+              <Image src={image} width={130} height={133} alt="" />
             </ImageContainer>
-          ))}
+            ))}
+        </ImagesGroup>
 
         <p>
           Uhuuul, <strong>{customerName}</strong>, sua compra de {" "} {productsImages.length} camisetas já está a caminho da sua casa.

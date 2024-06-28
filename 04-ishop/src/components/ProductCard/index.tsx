@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CardContainer, CardContent } from "./styles";
+import { CardContainer, CardContent, ImageContainer } from "./styles";
 import { IProduct } from "@/src/contexts/CartContext";
 import { useCart } from "@/src/hooks/useCart";
 
@@ -8,14 +8,16 @@ interface ItemProps{
 }
 
 export function ProductCard({cartItem}: ItemProps){
-  const { removeFromCart } = useCart()
+  const { removeFromCart } = useCart();
 
   function handleRemoveItem(){
     removeFromCart(cartItem.id)
-  }
+  };
   return(
     <CardContainer>
-      <Image width={52} height={52} src={cartItem.imageURL} alt={cartItem.name} />
+      <ImageContainer>
+        <Image width={52} height={52} src={cartItem.imageURL} alt={cartItem.name} />
+      </ImageContainer>
       <CardContent>
         <p> {cartItem.name} </p>
         <span> {cartItem.price} </span>
