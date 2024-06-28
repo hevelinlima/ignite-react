@@ -3,6 +3,8 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { BuyButton, CardsContainer, CheckoutInfo, Close, Content, Overlay, Title } from './styles'
 import { ProductCard } from '../ProductCard'
 import { useCart } from "@/src/hooks/useCart";
+import { useState } from 'react';
+import axios from 'axios';
 
 export function SideBar(){
   const { cartItems } = useCart();
@@ -11,7 +13,26 @@ export function SideBar(){
 
   const valueToPay = cartItems.reduce((total, product) => {
     return total + product.numberPrice;
-  }, 0);
+  }, 0).toFixed(2);
+
+  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false);
+
+  async function handleCheckout(){
+    try{
+      setIsCreatingCheckoutSession(true)
+      const response = await axios.post('/api/checkout', {
+        products: cartItems,
+      })
+
+      const { checkoutUrl } = response.data;
+
+      window.location.href = checkoutUrl;
+
+    } catch (err) {
+      setIsCreatingCheckoutSession(false)
+      alert('Falha ao redirecionar ao checkout!')
+    }
+  }
   
 
   return(
@@ -42,7 +63,10 @@ export function SideBar(){
           </div>
         </CheckoutInfo>
 
-        <BuyButton>
+        <BuyButton 
+         disabled={isCreatingCheckoutSession || cartItems.length <= 0}
+         onClick={handleCheckout}
+        >
           Finalizar compra
         </BuyButton>
 

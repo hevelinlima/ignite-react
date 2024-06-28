@@ -16,6 +16,7 @@ interface HomeProps{
     id: string;
     name: string;
     imageURL: string;
+    numberPrice: number;
     price: string;
     description: string;
     defaultPriceId: string;
@@ -23,8 +24,6 @@ interface HomeProps{
 }
 
 export default function Home({ products }: HomeProps) {
-  const { addToCart } = useCart()
-
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 'auto',
@@ -32,7 +31,8 @@ export default function Home({ products }: HomeProps) {
     }
   });
 
-  
+  const { addToCart, checkProductInCart } = useCart();
+
   return (
     <>
       <Head>
@@ -40,6 +40,9 @@ export default function Home({ products }: HomeProps) {
       </Head>
       <HomeContainer ref={sliderRef} className="keen-slider">
       {products.map(product => {
+        
+        const isProductAlreadyInCart = checkProductInCart(product.id);
+
         return(
             <Link href={`/product/${product.id}`}
             key={product.id} passHref prefetch={false}>
@@ -52,7 +55,9 @@ export default function Home({ products }: HomeProps) {
                     <strong>{product.name}</strong>
                     <span>{product.price}</span>
                   </FooterContent>
-                  <CartFooter onClick={() => addToCart(product)}>
+                  <CartFooter disabled={isProductAlreadyInCart} onClick={(e) => 
+                    {e.preventDefault();
+                      addToCart(product)}}>
                     <Handbag size={32} weight="bold" />
                   </CartFooter>
                 </ImageFooter>
@@ -82,6 +87,8 @@ export const getStaticProps: GetStaticProps = async () => {
               currency: 'BRL'
             }).format(price.unit_amount / 100)
           : 'Preço indisponível',
+          numberPrice: price && price.unit_amount !== null ? price.unit_amount / 100 : 0,
+          defaultPriceId: price.id,
     };
   });
 

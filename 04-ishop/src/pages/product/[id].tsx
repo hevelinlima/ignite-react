@@ -14,24 +14,10 @@ interface ProductProps{
 }
 
 export default function Product({ product }: ProductProps){
-  const { addToCart } = useCart()
-  // const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
-  // async function handleBuyProduct(){
-  //   try{
-  //     setIsCreatingCheckoutSession(true)
-  //     const response = await axios.post('/api/checkout', {
-  //       priceId: product.defaultPriceId,
-  //     })
+  const { addToCart, checkProductInCart } = useCart();
 
-  //     const { checkoutUrl } = response.data;
-
-  //     window.location.href = checkoutUrl;
-
-  //   } catch (err) {
-  //     setIsCreatingCheckoutSession(false)
-  //     alert('Falha ao redirecionar ao checkout!')
-  //   }
-  // }
+  const isProductAlreadyInCart = checkProductInCart(product.id);
+ 
   return(
     <>
      <Head>
@@ -45,7 +31,8 @@ export default function Product({ product }: ProductProps){
           <h1> {product.name} </h1>
           <span> {product.price} </span>
           <p> {product.description} </p>
-          <AddToCartButton /*disabled={isCreatingCheckoutSession}*/ onClick={() => {addToCart(product)}}>Colocar na sacola</AddToCartButton>
+          <AddToCartButton disabled={isProductAlreadyInCart} onClick={() => {addToCart(product)}}>Colocar na sacola</AddToCartButton>
+          
         </ProductDetails>
       </ProductContainer>
     </>
