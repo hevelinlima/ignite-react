@@ -53,7 +53,7 @@ export default function Home({ products }: HomeProps) {
                 <ImageFooter>
                   <FooterContent>
                     <strong>{product.name}</strong>
-                    <span>{product.numberPrice}</span>
+                    <span>{product.price}</span>
                   </FooterContent>
                   <CartFooter disabled={isProductAlreadyInCart} onClick={(e) => 
                     {e.preventDefault();

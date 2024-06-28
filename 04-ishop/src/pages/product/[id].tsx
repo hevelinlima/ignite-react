@@ -17,23 +17,7 @@ export default function Product({ product }: ProductProps){
   const { addToCart, checkProductInCart } = useCart();
 
   const isProductAlreadyInCart = checkProductInCart(product.id);
-  // const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
-  // async function handleBuyProduct(){
-  //   try{
-  //     setIsCreatingCheckoutSession(true)
-  //     const response = await axios.post('/api/checkout', {
-  //       priceId: product.defaultPriceId,
-  //     })
-
-  //     const { checkoutUrl } = response.data;
-
-  //     window.location.href = checkoutUrl;
-
-  //   } catch (err) {
-  //     setIsCreatingCheckoutSession(false)
-  //     alert('Falha ao redirecionar ao checkout!')
-  //   }
-  // }
+ 
   return(
     <>
      <Head>

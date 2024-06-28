@@ -103,7 +103,12 @@ export const BuyButton = styled('button', {
   fontSize: '$md',
   fontWeight: 'bold',
 
-  '&:hover': {
+  '&:disabled': {
+    opacity: 0.6,
+    cursor: 'not-allowed',
+  },
+
+  '&:not(:disabled):hover': {
     backgroundColor: '$green300',
     transition: 'all 0.2s ease-in-out',
     cursor: 'pointer'
