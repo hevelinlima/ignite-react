@@ -1,4 +1,4 @@
-import { CartFooter, FooterContent, HomeContainer, ImageFooter, Product } from "../styles/pages/home";
+import { CartFooter, FooterContent, HomeContainer, ImageFooter, LoadingComponents, Product } from "../styles/pages/home";
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css';
 
@@ -10,6 +10,8 @@ import Link from "next/link";
 import Head from "next/head";
 import { Handbag } from "@phosphor-icons/react";
 import { useCart } from "../hooks/useCart";
+import { Loading } from "../components/Loading";
+import { useEffect, useState } from "react";
 
 interface HomeProps{
   products: {
@@ -33,19 +35,35 @@ export default function Home({ products }: HomeProps) {
 
   const { addToCart, checkProductInCart } = useCart();
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() =>{
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [])
+
   return (
     <>
       <Head>
         <title>Início | Ignite Shop</title>
       </Head>
-      <HomeContainer ref={sliderRef} className="keen-slider">
-      {products.map(product => {
-        
-        const isProductAlreadyInCart = checkProductInCart(product.id);
+      {loading ? (
+        <LoadingComponents>
+          <Loading />
+          <Loading />
+          <Loading />
+        </LoadingComponents>
+      ) : (
+        <HomeContainer ref={sliderRef} className="keen-slider">
+        {products.map(product => {
+          
+          const isProductAlreadyInCart = checkProductInCart(product.id);
 
-        return(
+          return(
             <Link href={`/product/${product.id}`}
-            key={product.id} passHref prefetch={false}>
+              key={product.id} passHref prefetch={false}>
               <Product 
                 className="keen-slider__slide"
               >
@@ -63,9 +81,10 @@ export default function Home({ products }: HomeProps) {
                 </ImageFooter>
               </Product>
             </Link> 
-          )
-        })}
+            )
+          })}
       </HomeContainer>
+      )}
     </>
   );
 }

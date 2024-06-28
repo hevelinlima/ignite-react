@@ -84,4 +84,15 @@ export const CartFooter = styled('button', {
     cursor: 'pointer',
     transition: 'all 0.2s ease-in-out',
   }
+});
+
+export const LoadingComponents = styled('div', {
+  display: 'flex',
+  width: '100%',
+  maxWidth: 'calc(100vw - ((100vw - 1180px) / 2 ))',
+  marginLeft: 'auto',
+  minHeight: 430,
+
+  gap: '48px',
+  overflow: 'hidden',
 })
