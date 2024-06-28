@@ -11,7 +11,7 @@ export function SideBar(){
 
   const valueToPay = cartItems.reduce((total, product) => {
     return total + product.numberPrice;
-  }, 0);
+  }, 0).toFixed(2);
   
 
   return(
