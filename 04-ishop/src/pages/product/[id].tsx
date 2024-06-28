@@ -14,7 +14,9 @@ interface ProductProps{
 }
 
 export default function Product({ product }: ProductProps){
-  const { addToCart } = useCart()
+  const { addToCart, checkProductInCart } = useCart();
+
+  const isProductAlreadyInCart = checkProductInCart(product.id);
   // const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
   // async function handleBuyProduct(){
   //   try{
@@ -45,7 +47,8 @@ export default function Product({ product }: ProductProps){
           <h1> {product.name} </h1>
           <span> {product.price} </span>
           <p> {product.description} </p>
-          <AddToCartButton /*disabled={isCreatingCheckoutSession}*/ onClick={() => {addToCart(product)}}>Colocar na sacola</AddToCartButton>
+          <AddToCartButton disabled={isProductAlreadyInCart} onClick={() => {addToCart(product)}}>Colocar na sacola</AddToCartButton>
+          
         </ProductDetails>
       </ProductContainer>
     </>

@@ -74,7 +74,12 @@ export const CartFooter = styled('button', {
   color: '$white',
   border: 0,
 
-  '&:hover': {
+  '&:disabled': {
+    opacity: 0.6,
+    cursor: 'not-allowed',
+  },
+
+  '&:not(:disabled):hover': {
     background: '$green300',
     cursor: 'pointer',
     transition: 'all 0.2s ease-in-out',
