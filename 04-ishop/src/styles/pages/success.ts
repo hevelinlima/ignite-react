@@ -20,12 +20,12 @@ export const SuccessContainer = styled('main', {
     maxWidth: 560,
     textAlign: 'center',
 
-    marginTop: '2rem'
+    marginTop: '0.5rem'
   },
 
   a: {
     display: 'block',
-    marginTop: '5rem',
+    marginTop: '3rem',
     fontSize: '$lg',
     fontWeight: 'bold',
     color: '$green500',
@@ -48,8 +48,8 @@ export const ImageContainer = styled('div',  {
   alignItems: 'center',
   justifyContent: 'center',
 
-  marginTop: '4rem',
-  boxShadow: '0 0 60px 0 rgba(0, 0, 0, 0.8)', 
+  marginTop: '1rem',
+  boxShadow: '0 0 16px 0 rgba(0, 0, 0, 0.8)', 
 
   img: {
     objectFit: 'cover',

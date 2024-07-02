@@ -19,7 +19,7 @@ export default function Product({customerName, product, productsImages}: Success
   return(
     <>
       <Head>
-        <title>Compra Efetuada  | Ignite Shop</title>
+        <title>Compra Efetuada | Ignite Shop</title>
         <meta name="robots" content="noindex" />
       </Head>
       <SuccessContainer>
