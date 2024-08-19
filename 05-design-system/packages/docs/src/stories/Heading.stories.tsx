@@ -3,6 +3,7 @@ import { Heading, HeadingProps } from '@ignite-ui/react'
 
 export default {
   title: 'Typography/Heading',
+  tags: ['autodocs'],
   component: Heading,
   args: {
     children: 'Custom title',
@@ -15,5 +16,12 @@ export const CustomTag: StoryObj<HeadingProps> = {
   args: {
     children: 'H1 Heading',
     as: 'h1',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Por padrão o heading sempre será `h2`',
+      },
+    },
   },
 }
