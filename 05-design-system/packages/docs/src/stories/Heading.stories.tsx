@@ -20,7 +20,8 @@ export const CustomTag: StoryObj<HeadingProps> = {
   parameters: {
     docs: {
       description: {
-        story: 'Por padrão o heading sempre será `h2`',
+        story:
+          'Por padrão o heading sempre será `h2`, mas ele poder ser alterado com a propriedade `as`.',
       },
     },
   },
