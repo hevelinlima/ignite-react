@@ -24,13 +24,13 @@ export default {
 export const Primary: StoryObj<TextInputProps> = {
   args: {
     placeholder: 'Type here',
-  },
+  } as TextInputProps,
 }
 
 export const Disabled: StoryObj<TextInputProps> = {
   args: {
     disabled: true,
-  },
+  } as TextInputProps,
 }
 
 export const WithPrefix: StoryObj<TextInputProps> = {
