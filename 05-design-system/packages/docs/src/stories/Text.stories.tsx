@@ -19,3 +19,5 @@ export const Secondary: StoryObj<TextProps> = {
     as: 'strong',
   },
 }
+
+Text.displayName = 'Text'

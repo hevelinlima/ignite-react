@@ -49,3 +49,5 @@ export const Disabled: StoryObj<ButtonProps> = {
     disabled: true,
   } as ButtonProps,
 }
+
+Button.displayName = 'Button'

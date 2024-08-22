@@ -26,3 +26,5 @@ export const CustomTag: StoryObj<HeadingProps> = {
     },
   },
 }
+
+Heading.displayName = 'Heading'
