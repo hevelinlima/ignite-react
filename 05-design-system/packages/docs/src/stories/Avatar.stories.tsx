@@ -9,6 +9,13 @@ export default {
     src: 'https://github.com/hevelinlima.png',
     alt: 'Hévelin Lima',
   },
+  argTypes: {
+    src: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
 } as Meta<AvatarProps>
 
 export const Primary: StoryObj<AvatarProps> = {}

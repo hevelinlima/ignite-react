@@ -8,6 +8,25 @@ export default {
   tags: ['autodocs'],
   args: {
     children: 'Send',
+    variant: 'primary',
+    size: 'md',
+    disabled: 'true',
+  },
+  argTypes: {
+    variant: {
+      options: ['primary', 'secondary', 'tertiary'],
+      control: 'inline-radio',
+    },
+    size: {
+      options: ['sm', 'md'],
+      control: 'inline-radio',
+    },
+    disabled: {
+      type: 'boolean',
+    },
+    onClick: {
+      action: 'Click',
+    },
   },
 } as Meta<ButtonProps>
 
