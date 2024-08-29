@@ -1,5 +1,5 @@
-import { TooltipArrow, TooltipTrigger } from "@radix-ui/react-tooltip";
-import { Content, Root, TooltipContainer } from "./styles";
+import { TooltipArrow, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
+import { Arrow, Content, TooltipContainer } from "./styles";
 import { ReactNode } from "react";
 
 export interface TooltipProps {
@@ -9,15 +9,15 @@ export interface TooltipProps {
 
 export function Tooltip({isAvailable, children}: TooltipProps) {
   return(
-    <TooltipContainer>
-      <Root>
-        <TooltipTrigger>{children}</TooltipTrigger>
+    <TooltipProvider>
+      <TooltipContainer>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
         <Content>
-          <TooltipArrow />
+          <Arrow />
           {isAvailable ? "Data disponível" : "Data Indisponível"}
         </Content>
-      </Root>
-    </TooltipContainer>
+      </TooltipContainer>
+    </TooltipProvider>
   )
 }
 
