@@ -10,7 +10,7 @@ export default {
     children: 'Send',
     variant: 'primary',
     size: 'md',
-    disabled: 'true',
+    disabled: false,
   },
   argTypes: {
     variant: {
